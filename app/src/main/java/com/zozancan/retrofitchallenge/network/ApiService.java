@@ -1,4 +1,4 @@
-package com.zozancan.retrofitchallenge;
+package com.zozancan.retrofitchallenge.network;
 
 import com.zozancan.retrofitchallenge.model.User;
 

@@ -1,6 +1,8 @@
-package com.zozancan.retrofitchallenge;
+package com.zozancan.retrofitchallenge.network;
 
 import android.app.Application;
+
+import com.zozancan.retrofitchallenge.network.ApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

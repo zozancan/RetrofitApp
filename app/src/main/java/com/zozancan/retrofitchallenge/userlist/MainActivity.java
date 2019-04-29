@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.zozancan.retrofitchallenge.ApiService;
+import com.zozancan.retrofitchallenge.network.ApiService;
 import com.zozancan.retrofitchallenge.R;
-import com.zozancan.retrofitchallenge.RetrofitChallengeApplication;
+import com.zozancan.retrofitchallenge.network.RetrofitChallengeApplication;
 import com.zozancan.retrofitchallenge.album.AlbumActivity;
 import com.zozancan.retrofitchallenge.model.User;
 import com.zozancan.retrofitchallenge.postlist.PostListActivity;

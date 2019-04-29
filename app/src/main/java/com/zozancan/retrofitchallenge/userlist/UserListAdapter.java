@@ -1,5 +1,6 @@
 package com.zozancan.retrofitchallenge.userlist;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.MyView
         this.userList = userList;
         notifyDataSetChanged();
     }
-
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())

@@ -1,5 +1,6 @@
 package com.zozancan.retrofitchallenge.network;
 
+import com.zozancan.retrofitchallenge.model.Post;
 import com.zozancan.retrofitchallenge.model.User;
 
 import java.util.List;
@@ -11,4 +12,7 @@ public interface ApiService {
 
     @GET("users")
     Call<List<User>> listRepos();
+
+    @GET("posts")
+    Call<List<Post>> listPosts();
 }

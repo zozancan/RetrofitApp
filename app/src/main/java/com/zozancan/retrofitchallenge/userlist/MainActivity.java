@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements OnUserClick {
     @Override
     public void onUserClick(final User user) {
         new AlertDialog.Builder(this)
-                .setTitle("Title")
+                .setTitle("Lütfen Seçim Yapınız!")
                 .setMessage("Message")
                 .setPositiveButton("Albüm", null)
                 .setNegativeButton("Gönderi", new DialogInterface.OnClickListener() {

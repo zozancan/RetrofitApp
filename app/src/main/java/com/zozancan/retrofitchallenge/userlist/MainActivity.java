@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import com.zozancan.retrofitchallenge.ApiService;
 import com.zozancan.retrofitchallenge.R;
 import com.zozancan.retrofitchallenge.RetrofitChallengeApplication;
+import com.zozancan.retrofitchallenge.album.AlbumActivity;
 import com.zozancan.retrofitchallenge.model.User;
 import com.zozancan.retrofitchallenge.postlist.PostListActivity;
 
@@ -69,7 +70,14 @@ public class MainActivity extends AppCompatActivity implements OnUserClick {
         new AlertDialog.Builder(this)
                 .setTitle("Lütfen Seçim Yapınız!")
                 .setMessage("Message")
-                .setPositiveButton("Albüm", null)
+                .setPositiveButton("Albüm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(MainActivity.this, AlbumActivity.class);
+                        intent.putExtra(USER_KEY, user);
+                        startActivity(intent);
+                    }
+                })
                 .setNegativeButton("Gönderi", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

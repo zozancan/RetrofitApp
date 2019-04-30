@@ -1,5 +1,6 @@
 package com.zozancan.retrofitchallenge.album;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import com.zozancan.retrofitchallenge.R;
 import com.zozancan.retrofitchallenge.model.Album;
 import com.zozancan.retrofitchallenge.network.ApiService;
 import com.zozancan.retrofitchallenge.network.RetrofitChallengeApplication;
+import com.zozancan.retrofitchallenge.photos.PhotosActivity;
 
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class AlbumActivity extends AppCompatActivity implements OnAlbumClick {
 
     private AlbumAdapter adapter;
 
-    public static final String PHOTOS_KEY = "PHOTOS_KEY";
+    public static final String ALBUM_KEY = "ALBUM_KEY";
 
 
     @Override
@@ -63,6 +65,9 @@ public class AlbumActivity extends AppCompatActivity implements OnAlbumClick {
 
     @Override
     public void onAlbumClick(Album album) {
+        Intent intent = new Intent(AlbumActivity.this, PhotosActivity.class);
+        intent.putExtra(ALBUM_KEY, album);
+        startActivity(intent);
 
     }
 }

@@ -1,19 +1,21 @@
 package com.zozancan.retrofitchallenge.userlist;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
-
-import com.zozancan.retrofitchallenge.album.AlbumActivity;
-import com.zozancan.retrofitchallenge.network.ApiService;
 import com.zozancan.retrofitchallenge.R;
-import com.zozancan.retrofitchallenge.network.RetrofitChallengeApplication;
+import com.zozancan.retrofitchallenge.album.AlbumActivity;
 import com.zozancan.retrofitchallenge.model.User;
+import com.zozancan.retrofitchallenge.network.ApiService;
+import com.zozancan.retrofitchallenge.network.RetrofitChallengeApplication;
 import com.zozancan.retrofitchallenge.postlist.PostListActivity;
 
 import java.util.List;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnUserClick {
         list.setLayoutManager(layoutManager);
         adapter = new UserListAdapter(this);
         list.setAdapter(adapter);
+        toastMessage();
 
         getUsers();
     }
@@ -87,5 +90,17 @@ public class MainActivity extends AppCompatActivity implements OnUserClick {
                         startActivity(intent);
                     }
                 }).create().show();
+    }
+
+    private void toastMessage() {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        boolean isFirst = sharedPref.getBoolean("isFirst", true);
+        if (isFirst) {
+            Toast.makeText(getApplicationContext(),
+                    "Uygulamaya ilk defa girdiniz!", Toast.LENGTH_SHORT).show();
+        }
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("isFirst", false);
+        editor.apply();
     }
 }

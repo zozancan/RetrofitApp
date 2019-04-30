@@ -24,6 +24,8 @@ public class AlbumActivity extends AppCompatActivity implements OnAlbumClick {
 
     private AlbumAdapter adapter;
 
+    public static final String PHOTOS_KEY = "PHOTOS_KEY";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

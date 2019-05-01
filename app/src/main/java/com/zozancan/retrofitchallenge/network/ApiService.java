@@ -1,6 +1,7 @@
 package com.zozancan.retrofitchallenge.network;
 
 import com.zozancan.retrofitchallenge.model.Album;
+import com.zozancan.retrofitchallenge.model.Photos;
 import com.zozancan.retrofitchallenge.model.Post;
 import com.zozancan.retrofitchallenge.model.User;
 
@@ -19,6 +20,9 @@ public interface ApiService {
 
     @GET("albums")
     Call<List<Album>> listAlbums();
+
+    @GET("photos")
+    Call<List<Photos>> listPhotos();
 
 
 

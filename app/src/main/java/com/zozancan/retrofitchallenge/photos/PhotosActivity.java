@@ -1,5 +1,6 @@
 package com.zozancan.retrofitchallenge.photos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,6 +24,8 @@ public class PhotosActivity extends AppCompatActivity implements OnPhotosClick {
     private List<Photos> photosList;
 
     private PhotosAdapter adapter;
+
+    public static final String PHOTOS_KEY = "PHOTOS_KEY";
 
 
     @Override
@@ -60,7 +63,11 @@ public class PhotosActivity extends AppCompatActivity implements OnPhotosClick {
     }
 
     @Override
-    public void onPhotosClick(Photos photos) {
+    public void onPhotosClick(final Photos photos) {
+        Intent intent = new Intent(PhotosActivity.this, PhotosDetailActivity.class);
+        intent.putExtra(PHOTOS_KEY, photos);
+        startActivity(intent);
+
 
     }
 }

@@ -2,6 +2,8 @@ package com.zozancan.retrofitchallenge.photos;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.zozancan.retrofitchallenge.R;
 import com.zozancan.retrofitchallenge.model.Photos;
@@ -20,12 +22,20 @@ public class PhotosActivity extends AppCompatActivity {
 
     private List<Photos> photosList;
 
+    private PhotosAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos);
         service = ((RetrofitChallengeApplication) getApplication()).getService();
+
+        RecyclerView list = findViewById(R.id.photos_list);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, GridLayoutManager.DEFAULT_SPAN_COUNT);
+        list.setLayoutManager(gridLayoutManager);
+        adapter = new PhotosAdapter((OnPhotosClick) this);
+        list.setAdapter(adapter);
 
         getPhotos();
     }
@@ -35,6 +45,7 @@ public class PhotosActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Photos>> call, Response<List<Photos>> response) {
                 photosList = response.body();
+                displayPhotos();
             }
 
             @Override
@@ -42,5 +53,9 @@ public class PhotosActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void displayPhotos() {
+        adapter.setPhotosList(photosList);
     }
 }

@@ -18,6 +18,7 @@ import java.util.List;
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHolder> {
 
     String thumbnailUrl;
+    Context context;
     private List<Photos> photosList = new ArrayList<>();
     private OnPhotosClick photosClickListener;
 
@@ -34,6 +35,8 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHold
     @Override
     public PhotosAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
+        context = parent.getContext();
+
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_photos, parent, false);
 
@@ -45,7 +48,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHold
         final Photos photos = photosList.get(position);
 
 
-        Picasso.with((Context) photosClickListener).load(photos.getThumbnailUrl()).into(holder.photosIconImageView);
+        Picasso.with(context).load(photos.getThumbnailUrl()).into(holder.photosIconImageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

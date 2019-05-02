@@ -16,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PhotosActivity extends AppCompatActivity {
+public class PhotosActivity extends AppCompatActivity implements OnPhotosClick {
 
     private ApiService service;
 
@@ -32,9 +32,9 @@ public class PhotosActivity extends AppCompatActivity {
         service = ((RetrofitChallengeApplication) getApplication()).getService();
 
         RecyclerView list = findViewById(R.id.photos_list);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, GridLayoutManager.DEFAULT_SPAN_COUNT);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         list.setLayoutManager(gridLayoutManager);
-        adapter = new PhotosAdapter((OnPhotosClick) this);
+        adapter = new PhotosAdapter(this);
         list.setAdapter(adapter);
 
         getPhotos();
@@ -57,5 +57,10 @@ public class PhotosActivity extends AppCompatActivity {
 
     private void displayPhotos() {
         adapter.setPhotosList(photosList);
+    }
+
+    @Override
+    public void onPhotosClick(Photos photos) {
+
     }
 }
